@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './Navbar.css';
 
 type Props = {
@@ -6,27 +7,21 @@ type Props = {
   onLogout?: () => void;
 };
 
-const Navbar: React.FC<Props> = ({ isLoggedIn, onLogout }) => {
+const Navbar: React.FC<Props> = ({ isLoggedIn, onLogout }: Props) => {
   return (
     <nav className='navbar'>
       <div className='navbar-left'>
-        <a href='/' className='navbar-logo'>
+        <Link to='/' className='navbar-logo'>
           LeetCoach
-        </a>
-        <a href='/' className='navbar-link'>
+        </Link>
+        <Link to='/' className='navbar-link'>
           Home
-        </a>
+        </Link>
         {isLoggedIn && (
           <>
-            <a href='/problems' className='navbar-link'>
-              All Problems
-            </a>
-            <a href='/stats' className='navbar-link'>
-              Stats
-            </a>
-            <a href='/settings' className='navbar-link'>
-              Settings
-            </a>
+            <Link to='/dashboard' className='navbar-link'>
+              Dashboard
+            </Link>
           </>
         )}
       </div>
@@ -37,12 +32,12 @@ const Navbar: React.FC<Props> = ({ isLoggedIn, onLogout }) => {
           </button>
         ) : (
           <>
-            <a href='/login' className='navbar-link'>
+            <Link to='/login' className='navbar-link'>
               Login
-            </a>
-            <a href='/signup' className='navbar-button'>
+            </Link>
+            <Link to='/signup' className='navbar-button'>
               Sign Up
-            </a>
+            </Link>
           </>
         )}
       </div>

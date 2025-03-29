@@ -26,7 +26,7 @@ const ProblemFeedback: React.FC<Props> = ({ problemTitle, onSubmit }) => {
           className={`feedback-btn ${selected === 'easy' ? 'selected' : ''}`}
           onClick={() => handleClick('easy')}
         >
-          Solved Easily
+          Solved Easily (7 days)
         </button>
         <button
           className={`feedback-btn ${
@@ -34,13 +34,13 @@ const ProblemFeedback: React.FC<Props> = ({ problemTitle, onSubmit }) => {
           }`}
           onClick={() => handleClick('struggled')}
         >
-          Solved with struggle
+          Solved with struggle (3 days)
         </button>
         <button
           className={`feedback-btn ${selected === 'failed' ? 'selected' : ''}`}
           onClick={() => handleClick('failed')}
         >
-          Couldn't Solve
+          Couldn't Solve (1 day)
         </button>
       </div>
     </div>

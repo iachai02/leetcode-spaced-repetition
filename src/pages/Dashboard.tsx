@@ -1,6 +1,6 @@
 import React from 'react';
 import { sampleProblems } from '../data/problems';
-import ProblemCard from './ProblemCard';
+import ProblemCard from '../components/ProblemCard';
 import './Dashboard.css';
 
 const Dashboard: React.FC = () => {
