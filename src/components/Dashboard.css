@@ -1,0 +1,17 @@
+.dashboard {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 0 16px;
+}
+
+.dashboard-heading {
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+.problem-list {
+    display: flex;
+    flex-direction: column;
+}

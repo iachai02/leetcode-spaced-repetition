@@ -1,0 +1,43 @@
+.problem-card {
+    border: 1px solid #ccc;
+    border-radius: 12px;
+    padding: 16px;
+    margin-bottom: 12px;
+    background-color: #fff;
+    transition: box-shadow 0.2x ease;
+}
+
+.problem-card:hover {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.problem-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.problem-title {
+    font-weight: 600;
+    color: #1e40af;
+    text-decoration: none;
+    margin-right: 10px;
+}
+
+.problem-title:hover {
+    text-decoration: underline;
+}
+
+.problem-status {
+    padding: 4px 8px;
+    border-radius: 8px;
+    font-size: 12px;
+    background-color: #eef;
+    color: #333;
+}
+
+.problem-difficulty {
+    font-size: 14px;
+    color: #666;
+}
