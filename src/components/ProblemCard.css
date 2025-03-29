@@ -41,3 +41,23 @@
     font-size: 14px;
     color: #666;
 }
+
+.mark-done-btn {
+    margin-top: 12px;
+    padding: 8px 14px;
+    background-color: #1e40af;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.mark-done-btn:hover {
+    background-color: #3749b2;
+}
+
+.feedback-result {
+    margin-top: 12px;
+    font-size: 14px;
+}
