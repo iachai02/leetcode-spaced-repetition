@@ -1,19 +1,43 @@
 import React, { useState } from 'react';
+import { handleFeedback } from '../utils/handleFeedback';
 import './ProblemFeedback.css';
 
 type FeedbackType = 'easy' | 'struggled' | 'failed';
 
 interface Props {
+  problemId: string;
   problemTitle: string;
-  onSubmit: (feedback: FeedbackType) => void;
+  userId: string;
+  currentIntervalIndex: number;
+  onSubmit: () => void;
 }
 
-const ProblemFeedback: React.FC<Props> = ({ problemTitle, onSubmit }) => {
+const ProblemFeedback: React.FC<Props> = ({
+  problemId,
+  problemTitle,
+  userId,
+  currentIntervalIndex,
+  onSubmit,
+}) => {
   const [selected, setSelected] = useState<FeedbackType | null>(null);
+  const [loading, setLoading] = useState(false);
 
-  const handleClick = (type: FeedbackType) => {
+  const handleClick = async (type: FeedbackType) => {
     setSelected(type);
-    onSubmit(type);
+    setLoading(true);
+
+    await handleFeedback({
+      userId,
+      problemId,
+      feedback: type,
+      currentIntervalIndex,
+    });
+
+    setLoading(false);
+
+    if (onSubmit) {
+      onSubmit();
+    }
   };
 
   return (
@@ -25,6 +49,7 @@ const ProblemFeedback: React.FC<Props> = ({ problemTitle, onSubmit }) => {
         <button
           className={`feedback-btn ${selected === 'easy' ? 'selected' : ''}`}
           onClick={() => handleClick('easy')}
+          disabled={loading}
         >
           Solved Easily (7 days)
         </button>
@@ -33,12 +58,14 @@ const ProblemFeedback: React.FC<Props> = ({ problemTitle, onSubmit }) => {
             selected === 'struggled' ? 'selected' : ''
           }`}
           onClick={() => handleClick('struggled')}
+          disabled={loading}
         >
           Solved with struggle (3 days)
         </button>
         <button
           className={`feedback-btn ${selected === 'failed' ? 'selected' : ''}`}
           onClick={() => handleClick('failed')}
+          disabled={loading}
         >
           Couldn't Solve (1 day)
         </button>

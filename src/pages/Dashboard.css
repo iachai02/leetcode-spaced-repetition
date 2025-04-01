@@ -11,6 +11,24 @@
     text-align: center;
 }
 
+.dashboard-controls {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.add-button {
+    border-radius: 10px;
+    padding: 10px 15px;
+    border: 1px solid #ccc;
+}
+
+.add-button:hover {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+}
+
 .problem-list {
     display: flex;
     flex-direction: column;

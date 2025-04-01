@@ -4,15 +4,26 @@ import './ProblemCard.css';
 
 type Props = {
   title: string;
+  problemId: string;
   difficulty: string;
   link: string;
   status: string;
+  userId: string;
+  currentIntervalIndex: number;
 };
 
-const ProblemCard: React.FC<Props> = ({ title, difficulty, link, status }) => {
+const ProblemCard: React.FC<Props> = ({
+  title,
+  problemId,
+  difficulty,
+  link,
+  status,
+  userId,
+  currentIntervalIndex,
+}) => {
   const [hasClicked, setHasClicked] = useState(false);
   const [showFeedback, setShowFeedback] = useState(false);
-  const [feedback, setFeedback] = useState<string | null>(null);
+  const [feedbackSubmitted, setFeedbackSubmitted] = useState(false);
 
   const handleLinkClick = () => {
     setHasClicked(true);
@@ -20,11 +31,6 @@ const ProblemCard: React.FC<Props> = ({ title, difficulty, link, status }) => {
 
   const handleMarkAsDone = () => {
     setShowFeedback(true);
-  };
-
-  const handleFeedbackSubmit = (response: 'easy' | 'struggled' | 'failed') => {
-    setFeedback(response);
-    // save to local storage/backend
   };
 
   return (
@@ -43,20 +49,24 @@ const ProblemCard: React.FC<Props> = ({ title, difficulty, link, status }) => {
       </div>
       <p className='problem-difficultry'>Difficulty: {difficulty}</p>
 
-      {hasClicked && !showFeedback && (
+      {hasClicked && !showFeedback && !feedbackSubmitted && (
         <button className='mark-done-btn' onClick={handleMarkAsDone}>
           Mark as Done
         </button>
       )}
 
-      {showFeedback && !feedback && (
-        <ProblemFeedback problemTitle={title} onSubmit={handleFeedbackSubmit} />
+      {showFeedback && !feedbackSubmitted && (
+        <ProblemFeedback
+          problemId={problemId}
+          problemTitle={title}
+          userId={userId}
+          currentIntervalIndex={currentIntervalIndex}
+          onSubmit={() => setFeedbackSubmitted(true)}
+        />
       )}
 
-      {feedback && (
-        <p className='feedback-result'>
-          You marked this as: <strong>{feedback}</strong>
-        </p>
+      {feedbackSubmitted && (
+        <p className='feedback-result'>Feedback submitted!</p>
       )}
     </div>
   );
