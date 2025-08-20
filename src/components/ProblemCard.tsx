@@ -4,7 +4,7 @@ import './ProblemCard.css';
 
 type Props = {
   title: string;
-  problemId: string;
+  problemId: number;
   difficulty: string;
   link: string;
   status: string;

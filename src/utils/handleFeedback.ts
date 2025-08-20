@@ -8,7 +8,7 @@ export async function handleFeedback({
     currentIntervalIndex = 0
 }: {
     userId: string;
-    problemId: string;
+    problemId: number;
     feedback: FeedbackType;
     currentIntervalIndex: number;
 }) {
