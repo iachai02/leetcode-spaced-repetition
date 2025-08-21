@@ -5,7 +5,7 @@ import './ProblemFeedback.css';
 type FeedbackType = 'easy' | 'struggled' | 'failed';
 
 interface Props {
-  problemId: string;
+  problemId: number;
   problemTitle: string;
   userId: string;
   currentIntervalIndex: number;

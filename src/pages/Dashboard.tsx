@@ -5,16 +5,16 @@ import './Dashboard.css';
 
 interface UserProgress {
   next_review_date: string;
-  problem_id: string;
+  problem_id: number;
   current_interval_index: number;
   status: string;
 }
 
 type Problem = {
-  id: string;
+  id: number;
   title: string;
   difficulty: string;
-  link: string;
+  url: string;
 };
 
 const Dashboard: React.FC = () => {
@@ -40,7 +40,7 @@ const Dashboard: React.FC = () => {
       setUserId(user.id);
 
       const { data: problemsData, error: problemError } = await supabase
-        .from('problems')
+        .from('Blind_75')
         .select('*');
 
       if (problemError) {
@@ -67,7 +67,7 @@ const Dashboard: React.FC = () => {
   }, []);
 
   const getProgressForProblem = (
-    problemId: string
+    problemId: number
   ): UserProgress | undefined => {
     return userProgress.find((p) => p.problem_id === problemId);
   };
@@ -124,7 +124,7 @@ const Dashboard: React.FC = () => {
               title={problem.title}
               problemId={problem.id}
               difficulty={problem.difficulty}
-              link={problem.link}
+              link={problem.url}
               status={progress?.status || 'new'}
               currentIntervalIndex={progress?.current_interval_index || 0}
               userId={userId || ''}
